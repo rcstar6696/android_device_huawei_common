@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.carbonrom.settings.device"
+    android:sharedUserId="android.uid.system" >
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.INJECT_EVENTS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <protected-broadcast android:name="com.android.systemui.doze.pulse" />
+
+    <uses-sdk
+        android:minSdkVersion="26"
+        android:targetSdkVersion="26" />
+    <application
+        android:label="@string/advanced_settings"
+        android:theme="@style/AppTheme"
+        android:supportsRtl="true" >
+        <activity
+            android:name="org.carbonrom.settings.device.DeviceSettingsActivity"
+            android:exported="false"
+            android:label="@string/advanced_settings"
+            android:icon="@drawable/ic_settings_parts"
+            android:launchMode="singleTask" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+            </intent-filter>
+                  <meta-data android:name="com.android.settings.dismiss"
+                       android:value="9,13,30" />
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.homepage" />
+        </activity>
+        <activity-alias
+            android:name="org.carbonrom.settings.device.DeviceSettings"
+            android:icon="@drawable/ic_settings_parts"
+            android:exported="true"
+            android:label="@string/advanced_settings"
+            android:targetActivity="DeviceSettingsActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+                <meta-data android:name="com.android.settings.dismiss"
+                       android:value="9,13,30" />
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.homepage" />
+        </activity-alias>
+        <activity
+            android:name="org.carbonrom.settings.device.GestureSettingsActivity"
+            android:exported="false"
+            android:label="@string/category_gestures_title"
+            android:launchMode="singleTask" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <service android:name="ScreenStateService" android:permission="ScreenStateService">
+            <intent-filter>
+                <action android:name="ScreenStateService"/>
+            </intent-filter>
+        </service>
+        <receiver android:name="org.carbonrom.settings.device.Startup" >
+            <intent-filter android:priority="100" >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

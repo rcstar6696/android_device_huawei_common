@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2014-2016 The OmniROM Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/fp_gestures_title">
+        <SwitchPreference
+            android:key="fp_gestures_key"
+            android:summary="@string/fp_gestures_summary"
+            android:title="@string/fp_gestures_title" />
+    </PreferenceCategory>
+        
+    <PreferenceCategory
+        android:title="@string/touchscreen_title">
+        <SwitchPreference
+            android:key="high_touch_key"
+            android:summary="@string/high_touch_summary"
+            android:title="@string/high_touch_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/colour_profiles">
+        <ListPreference
+            android:key="colour_profiles_key"
+            android:title="@string/colour_profiles"
+            android:entries="@array/colour_profiles_entries"
+            android:entryValues="@array/colour_profiles_values"
+            android:persistent="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/colour_temperature">
+        <org.carbonrom.settings.device.ColourTempPreference
+            android:key="colour_temp_key"
+            android:title="@string/colour_temperature"
+            android:summary="@string/colour_temperature" />
+
+        <org.carbonrom.settings.device.preference.ColorSelectPreference
+            android:key="colour_temp_rgb_key"
+            ledPreview="false"
+            android:title="@string/colour_temperature_rgb"
+            android:persistent="false" />
+    </PreferenceCategory>
+</PreferenceScreen>

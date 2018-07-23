@@ -1,0 +1,7 @@
+# Allow binder communication with displayengineserver
+binder_call(system_server, displayengineserver)
+
+# Allow system_server to find display_engine_service
+allow system_server display_engine_service:service_manager find;
+
+allow system_server shell_prop:property_service set;

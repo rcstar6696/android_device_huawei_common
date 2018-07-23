@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="openkirin.overlay.notch"
+        android:versionCode="1"
+        android:versionName="1.0">
+        <overlay android:targetPackage="android"
+                android:requiredSystemPropertyName="persist.sys.overlay.notch"
+                android:requiredSystemPropertyValue="true"
+		android:priority="5"
+		android:isStatic="true" />
+</manifest>

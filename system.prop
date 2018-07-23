@@ -1,0 +1,37 @@
+# Enable ADB authentication
+ro.adb.secure=1
+
+# Audio
+audio.deep_buffer.media=true
+ro.config.media_vol_steps=25
+ro.config.vc_call_vol_steps=7
+
+# MediaCodec
+persist.sys.google_avc_enc=0
+persist.sys.sr_google_avc_enc=1
+persist.debug.wfd.enable=0
+
+# Perf
+ro.vendor.qti.sys.fw.bg_apps_limit=45
+
+# HWUI
+debug.hwui.profile=true
+
+# Gpu Test
+debug.egl.hw=1
+debug.egl.profiler=1
+debug.hwui.use_buffer_age=false
+debug.performance.tuning=1
+debug.sf.hw=1
+hwui.disable_vsync=true
+ro.config.enable.hw_accel=true
+video.accelerate.hw=1
+
+# Test
+bt.max.hfpclient.connections=2
+persist.sys.huawei.debug.on=0
+ro.config.face_detect=1
+ro.config.hw_hungtasklist=whitelist,system_server,SurfaceFlinger
+config.hw_power_saving=1
+
+ro.build.version.security_patch_sys=2018-07-05
