@@ -1,5 +1,5 @@
 type vndk_detect, coredomain, domain;
-type vndk_detect_exec, exec_type, file_type;
+type vndk_detect_exec, exec_type, file_type, core_data_file_type;
 
 init_daemon_domain(vndk_detect);
 allow vndk_detect sepolicy_file:file r_file_perms;

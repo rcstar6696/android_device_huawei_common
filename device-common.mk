@@ -15,10 +15,11 @@
 #
 
 $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
+$(call inherit-product-if-exists, vendor/aosp/config/common.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/treble_common.mk)
-$(call inherit-product, vendor/huawei/vndk/vndk.mk)
+$(call inherit-product, vendor/huawei/common/huawei-vendor.mk)
 
 # Platform Path
 PLATFORM_PATH := device/huawei/common
@@ -32,7 +33,6 @@ PRODUCT_PACKAGES += \
     init.kirin.environ.rc
 
 BOARD_BUILD_DISABLED_VBMETAIMAGE := false
-
 
 # Camera
 PRODUCT_COPY_FILES += \
@@ -61,24 +61,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.manager@1.0
-    
-# Release tools
-PRODUCT_COPY_FILES += \
-    $(PLATFORM_PATH)/releasetools/releasetools.kirin.sh:system/bin/releasetools.kirin.sh
-    
-# Huawei Device Settings    
-PRODUCT_PACKAGES += \
-    HuaweiParts
-
-# Huawei Doze
-PRODUCT_PACKAGES += \
-    HisiDoze
-
-# Hotword fix
-PRODUCT_PACKAGES += \
-	HotwordEnrollmentOKGoogleHI6403 \
-    HotwordEnrollmentXGoogleHI6403
-       
+           
 # Input
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/keylayout/fingerprint.kl:system/usr/keylayout/fingerprint.kl
@@ -94,21 +77,29 @@ PRODUCT_COPY_FILES += \
 # Freeform Multiwindow
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.freeform_window_management.xml:system/etc/permissions/android.software.freeform_window_management.xml
-    
-# Radio
-PRODUCT_PACKAGES += \
-    qti-telephony-common
 
-PRODUCT_BOOT_JARS += \
-    telephony-ext
-    
+# Aosp Hardware   
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/aosp_excluded_hardware.xml:system/etc/permissions/aosp_excluded_hardware.xml       
+        
 # APNs
 PRODUCT_COPY_FILES += \
-    $(PLATFORM_PATH)/ril/apns-full-conf.xml:system/etc/apns-conf.xml
+     device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
 
 # Resize system
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/rw-system.sh:system/bin/rw-system.sh
+    
+# Aosp    
+PRODUCT_PACKAGES += \
+     Dialer \
+     Launcher3QuickStep \
+     WallpaperPicker
+
+PRODUCT_PACKAGES += \
+     Launcher3 \
+     Eleven \
+     Jelly
 
 # Shims
 PRODUCT_PACKAGES += \
@@ -125,11 +116,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     textclassifier.smartselection.bundle1
     
-# Overlays
-PRODUCT_PACKAGES += \
-    openkirin-overlay-burnin \
-    openkirin-overlay-notch
-
 # Override device name
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.build.version.sdk=$(PLATFORM_SDK_VERSION) \
@@ -137,7 +123,8 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.build.version.all_codenames=$(PLATFORM_VERSION_ALL_CODENAMES) \
     ro.build.version.huawei=8.0.0 \
     ro.build.version.release=$(PLATFORM_VERSION) \
-    ro.cust.cdrom=/dev/null
+    ro.cust.cdrom=/dev/null \
+    ro.build.version.kmaster=8.1.0
 
 # Sdcardfs    
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
@@ -152,6 +139,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Huawei HiSuite (also other OEM custom programs I guess) it's of no use in AOSP builds
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 	persist.sys.usb.config=adb
+
+# disable HW Overlays
+PRODUCT_COPY_FILES += \
+    $(PLATFORM_PATH)/hw-overlay.sh:system/bin/hw-overlay.sh
 
 # USB Audio
 PRODUCT_COPY_FILES += \

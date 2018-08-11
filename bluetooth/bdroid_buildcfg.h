@@ -22,5 +22,5 @@ static inline const char* BtmDefLocalName()
 #define BTIF_HF_WBS_PREFERRED TRUE
 
 #define BLE_VND_INCLUDED TRUE
-
+#undef PROPERTY_VALUE_MAX
 #endif

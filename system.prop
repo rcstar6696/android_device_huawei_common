@@ -16,16 +16,10 @@ ro.vendor.qti.sys.fw.bg_apps_limit=45
 
 # HWUI
 debug.hwui.profile=true
+debug.hwc.max_hw_overlays=0
 
-# Gpu Test
-debug.egl.hw=1
-debug.egl.profiler=1
-debug.hwui.use_buffer_age=false
-debug.performance.tuning=1
-debug.sf.hw=1
-hwui.disable_vsync=true
-ro.config.enable.hw_accel=true
-video.accelerate.hw=1
+# Disable statsd
+ro.statsd.enable=false
 
 # Test
 bt.max.hfpclient.connections=2
@@ -35,3 +29,9 @@ ro.config.hw_hungtasklist=whitelist,system_server,SurfaceFlinger
 config.hw_power_saving=1
 
 ro.build.version.security_patch_sys=2018-07-05
+
+# Enable FP nav by default
+sys.fpnav.enabled=1
+
+# Make sdcards visibile in StorageManager
+persist.sys.adoptable_fbe=true

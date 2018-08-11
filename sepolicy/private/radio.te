@@ -1,1 +1,4 @@
-allow radio vendor_file:file { open read getattr execute };
+#allow radio vendor_file:file { open read getattr execute };
+allow radio system_data_file:lnk_file r_file_perms;
+typeattribute radio system_executes_vendor_violators;
+allow radio vendor_file:file rx_file_perms;

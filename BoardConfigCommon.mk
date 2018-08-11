@@ -71,11 +71,7 @@ HEALTHD_ENABLE_HUAWEI_FASTCHG_CHECK := true
 
 # Extended Filesystem Support
 TARGET_EXFAT_DRIVER := exfat
-
-# Lineage hardware
-BOARD_HARDWARE_CLASS += \
-    $(PLATFORM_PATH)/lineagehw
-    
+  
 # Display
 TARGET_USES_HWC2 := true
 
@@ -93,20 +89,14 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 OVERRIDE_RS_DRIVER := libRSDriverArm.so
 HWUI_COMPILE_SYMBOLS := true
 
-# linker
-TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
-
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 
+BOARD_VNDK_RUNTIME_DISABLE := true
+BOARD_USE_LEGACY_UI := true
+
 # Properties
 TARGET_SYSTEM_PROP := $(PLATFORM_PATH)/system.prop
-
-# Radio
-TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
-
-# Release tools
-# TARGET_RELEASETOOLS_EXTENSIONS := $(PLATFORM_PATH)/releasetools
 
 # Sepolicy
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(PLATFORM_PATH)/sepolicy/private
@@ -117,7 +107,8 @@ TARGET_LD_SHIM_LIBS := \
     /system/lib64/libdisplayenginesvc_1_0.so|libshims_hwsmartdisplay_jni.so \
     /system/lib64/libdisplayenginesvc_1_1.so|libshims_hwsmartdisplay_jni.so \
     /system/lib64/libhwpwmanager_jni.so|libshims_hwsmartdisplay_jni.so \
-    /system/lib64/libhwsmartdisplay_jni.so|libshims_hwsmartdisplay_jni.so
+    /system/lib64/libhwsmartdisplay_jni.so|libshims_hwsmartdisplay_jni.so \
+    /system/lib64/libHwPostCamera_jni.so|libui_shim.so
 
 # System size
 BOARD_KERNELIMAGE_PARTITION_SIZE := 15800132

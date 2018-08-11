@@ -1,0 +1,3 @@
+# Allow ueventd to read /proc/bootdevice
+type proc_bootdevice, fs_type, proc_type;
+allow ueventd proc_bootdevice:file r_file_perms;
