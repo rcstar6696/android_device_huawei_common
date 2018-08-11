@@ -33,7 +33,6 @@ PRODUCT_PACKAGES += \
 
 BOARD_BUILD_DISABLED_VBMETAIMAGE := false
 
-
 # Camera
 PRODUCT_COPY_FILES += \
    $(PLATFORM_PATH)/camera/cam.hi3650.sh:system/bin/cam.hi3650.sh
@@ -61,24 +60,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.manager@1.0
-    
-# Release tools
-PRODUCT_COPY_FILES += \
-    $(PLATFORM_PATH)/releasetools/releasetools.kirin.sh:system/bin/releasetools.kirin.sh
-    
-# Huawei Device Settings    
-PRODUCT_PACKAGES += \
-    HuaweiParts
-
-# Huawei Doze
-PRODUCT_PACKAGES += \
-    HisiDoze
-
-# Hotword fix
-PRODUCT_PACKAGES += \
-	HotwordEnrollmentOKGoogleHI6403 \
-    HotwordEnrollmentXGoogleHI6403
-       
+           
 # Input
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/keylayout/fingerprint.kl:system/usr/keylayout/fingerprint.kl
@@ -94,14 +76,11 @@ PRODUCT_COPY_FILES += \
 # Freeform Multiwindow
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.freeform_window_management.xml:system/etc/permissions/android.software.freeform_window_management.xml
-    
-# Radio
-PRODUCT_PACKAGES += \
-    qti-telephony-common
 
-PRODUCT_BOOT_JARS += \
-    telephony-ext
-    
+# Aosp Hardware   
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/aosp_excluded_hardware.xml:system/etc/permissions/aosp_excluded_hardware.xml       
+        
 # APNs
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/ril/apns-full-conf.xml:system/etc/apns-conf.xml
@@ -109,6 +88,17 @@ PRODUCT_COPY_FILES += \
 # Resize system
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/rw-system.sh:system/bin/rw-system.sh
+    
+# Aosp    
+PRODUCT_PACKAGES += \
+     Dialer \
+     Launcher3QuickStep \
+     WallpaperPicker
+
+PRODUCT_PACKAGES += \
+     Launcher3 \
+     Eleven \
+     Jelly
 
 # Shims
 PRODUCT_PACKAGES += \
@@ -125,18 +115,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     textclassifier.smartselection.bundle1
     
-# Overlays
-PRODUCT_PACKAGES += \
-    openkirin-overlay-burnin \
-    openkirin-overlay-notch
-
 # Override device name
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.build.version.sdk=$(PLATFORM_SDK_VERSION) \
     ro.build.version.codename=$(PLATFORM_VERSION_CODENAME) \
     ro.build.version.all_codenames=$(PLATFORM_VERSION_ALL_CODENAMES) \
     ro.build.version.huawei=8.0.0 \
-    ro.build.version.release=$(PLATFORM_VERSION) \
+    ro.build.version.release=8.1.0 \
     ro.cust.cdrom=/dev/null
 
 # Sdcardfs    
