@@ -89,6 +89,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/rw-system.sh:system/bin/rw-system.sh
     
+# Disable HW Overlays
+PRODUCT_COPY_FILES += \
+    $(PLATFORM_PATH)/hw-overlay.sh:system/bin/hw-overlay.sh
+    
 # Aosp    
 PRODUCT_PACKAGES += \
      Dialer \

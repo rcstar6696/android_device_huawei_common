@@ -3,6 +3,7 @@
 /system/bin/rw-system.sh 						u:object_r:phhsu_exec:s0
 /system/bin/cam.hi3650.sh                       u:object_r:phhsu_exec:s0
 /system/bin/releasetools.kirin.sh 						u:object_r:phhsu_exec:s0
+/system/bin/hw-overlay.sh 						u:object_r:phhsu_exec:s0
 
 # Display engine
 /system/bin/displayengineserver                 u:object_r:displayengineserver_exec:s0
